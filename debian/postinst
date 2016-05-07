@@ -1,4 +1,7 @@
 #!/bin/sh -ex
 
 a2enmod proxy_http
+a2dissite 000-default
+a2ensite pelias
+
 apache2ctl restart
