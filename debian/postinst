@@ -1,0 +1,4 @@
+#!/bin/sh -ex
+
+a2enmod proxy_http
+apache2ctl restart
