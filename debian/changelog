@@ -1,3 +1,9 @@
+pelias-frontpage (0.0.1-ubuntu1~xenial5) xenial; urgency=medium
+
+  * Added autocomplete map marker HTML demo.
+
+ -- Michal Migurski <mike-launchpad@teczno.com>  Sun, 08 May 2016 10:55:02 -0700
+
 pelias-frontpage (0.0.1-ubuntu1~xenial4) xenial; urgency=medium
 
   * Added front page HTML form.
