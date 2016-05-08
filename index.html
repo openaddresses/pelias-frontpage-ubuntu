@@ -1,1 +1,42 @@
-<form action="/v1/search" method="get">Search Pelias: <input type="search" name="text" placeholder="Search"></form>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<body>
+
+<form action="/v1/search" method="get">
+    Search Pelias:
+    <input type="search" name="text" id="text" placeholder="Search">
+    <input type="submit" value="Go">
+</form>
+
+<script>
+  $(function() {
+    function autocomplete(request, response)
+    {
+        var complete = function(xhr, _) { onAutocomplete(response, xhr.responseJSON) };
+        $.ajax('/v1/autocomplete', {data: {text: request.term}, complete: complete});
+        
+    }
+    
+    function onAutocomplete(response, results)
+    {
+        var addresses = results.features.slice();
+        for(var i in addresses) {
+            addresses[i] = addresses[i].properties.label;
+        }
+        response(addresses);
+    }
+
+    $( "#text" ).autocomplete({
+      source: autocomplete
+    });
+  });
+</script>
+
+</body>
+</html>
